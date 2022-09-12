@@ -31,6 +31,7 @@ jobs:
     
       - name: Optimize and Bundle Cartridge
         run: |
+          mkdir build
           ./binaryen-version_110/bin/wasm-opt target/wasm32-unknown-unknown/release/cart.wasm -o cart.wasm -Oz --strip-dwarf --strip-producers --zero-filled-memory
           npx w4 bundle build/cart.wasm --title "Snake" --html public/index.html --linux build/snake-linux --windows build/snake.exe
 

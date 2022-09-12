@@ -122,7 +122,7 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: build/snake-linux
           asset_name: snake-linux
-          asset_content_type: application/octet-stream
+          asset_content_type: application/x-executable
 
       - name: Upload Windows executable
         id: upload-windows

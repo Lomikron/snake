@@ -87,10 +87,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download cartridge artifact
+      - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
           name: build
+          path: build/
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

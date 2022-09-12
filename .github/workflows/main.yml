@@ -16,8 +16,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm install wasm4
-          wget https://github.com/WebAssembly/binaryen/releases/download/version_110/binaryen-version_110-x86_64-linux.tar.gz
-          tar -xf binaryen-version_110-x86_64-linux.tar.gz
+          wget https://github.com/WebAssembly/binaryen/releases/download/version_105/binaryen-version_105-x86_64-linux.tar.gz
+          tar -xf binaryen-version_105-x86_64-linux.tar.gz
         
       - uses: actions-rs/toolchain@v1
         with:
@@ -31,7 +31,7 @@ jobs:
       - name: Optimize and Bundle Cartridge
         run: |
           mkdir build
-          ./binaryen-version_110/bin/wasm-opt target/wasm32-unknown-unknown/release/cart.wasm -o build/cart.wasm -Oz --strip-dwarf --strip-producers --zero-filled-memory
+          ./binaryen-version_105/bin/wasm-opt target/wasm32-unknown-unknown/release/cart.wasm -o build/cart.wasm -Oz --strip-dwarf --strip-producers --zero-filled-memory
           npx w4 bundle build/cart.wasm --title "Snake" --html public/index.html --linux build/snake-linux --windows build/snake.exe
 
       - name: Archive build
